@@ -10,7 +10,7 @@ interface FeatureCardProps {
 const FeatureCard = ({ feature, onPress }: FeatureCardProps) => {
   return (
     <TouchableOpacity
-      className="w-[48%] bg-[#e9eaec60] rounded-xl p-4 mb-4"
+      className="w-[48%] bg-[#F9FAFB] rounded-2xl p-4 mb-4"
       onPress={onPress}
     >
       <View
