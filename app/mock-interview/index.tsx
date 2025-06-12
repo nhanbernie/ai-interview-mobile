@@ -1,9 +1,7 @@
-import React from 'react';
 import { View, ScrollView } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
-import HeaderTitle from '@/components/ui/HeaderTitle';
-import InterviewOption from '@/components/ui/InterviewOption';
+import { InterviewOption, HeaderTitle } from '@/components/ui';
 import { INTERVIEW_OPTIONS } from '@/constants/mockInterview';
 
 export default function MockInterviewScreen() {

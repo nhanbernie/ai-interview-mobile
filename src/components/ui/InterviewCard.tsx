@@ -1,7 +1,7 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-
+import { router } from 'expo-router';
 const InterviewCard = () => {
   return (
     <View className="rounded-3xl overflow-hidden w-full mb-6">
@@ -26,6 +26,9 @@ const InterviewCard = () => {
         <TouchableOpacity
           activeOpacity={0.7}
           className="bg-white px-5 py-4 rounded-full flex-row items-center"
+          onPress={() => {
+            router.push(`/mock-interview`);
+          }}
         >
           <Text className="text-blue-600 font-medium mr-1">Bắt đầu</Text>
           <Ionicons name="chevron-forward" size={18} color="#2563eb" />
