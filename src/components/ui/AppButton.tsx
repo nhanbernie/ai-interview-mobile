@@ -1,4 +1,3 @@
-import React from 'react';
 import { Pressable, StyleSheet, ViewStyle, PressableProps } from 'react-native';
 
 interface AppButtonProps extends PressableProps {
