@@ -1,75 +1,47 @@
-import { View, Text, Pressable, ScrollView } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
-
-const mockOptions = [
-  {
-    id: 'form',
-    title: 'Phỏng vấn dựa trên form',
-    description: 'Nhập thông tin để tạo câu hỏi phỏng vấn theo yêu cầu của bạn',
-  },
-  {
-    id: 'cv',
-    title: 'Phỏng vấn dựa trên CV',
-    description: 'Tải CV lên để nhận câu hỏi phù hợp với kinh nghiệm của bạn',
-  },
-  {
-    id: 'cv-jd',
-    title: 'Phỏng vấn dựa trên CV & JD',
-    description:
-      'Tải CV và JD lên để nhận câu hỏi phù hợp với vị trí tuyển dụng',
-  },
-];
+import React from 'react';
+import { View, ScrollView } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { router } from 'expo-router';
+import HeaderTitle from '@/components/ui/HeaderTitle';
+import InterviewOption from '@/components/ui/InterviewOption';
+import { INTERVIEW_OPTIONS } from '@/constants/mockInterview';
 
 export default function MockInterviewScreen() {
-  const navigation = useNavigation();
+  const insets = useSafeAreaInsets();
 
-  const handleSelect = (optionId: string) => {
-    // Điều hướng tuỳ theo id
-    // navigation.navigate('SomeScreen', { option: optionId });
-    console.log('Selected:', optionId);
+  const handleOptionPress = (route: string) => {
+    router.push(route as any);
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-white">
-      <View className="bg-indigo-500 px-4 pt-4 pb-6 rounded-b-3xl">
-        <Text className="text-white text-lg font-bold">
-          Chọn Mock Interview
-        </Text>
-        <Text className="text-white text-sm mt-1">
-          Lựa chọn phương thức phỏng vấn phù hợp với bạn
-        </Text>
+    <View className="flex-1 bg-white">
+      {/* Header */}
+      <View
+        className="bg-indigo-600 pb-16 h-50 rounded-b-3xl justify-center"
+        style={{ paddingTop: insets.top }}
+      >
+        <HeaderTitle
+          title="Chọn Mock Interview"
+          subTitle="Lựa chọn phương thức phỏng vấn phù hợp với bạn"
+        />
       </View>
 
-      <ScrollView contentContainerClassName="p-4">
-        {mockOptions.map((option) => (
-          <Pressable
+      {/* Content */}
+      <ScrollView
+        scrollEnabled={false}
+        contentContainerStyle={{ paddingHorizontal: 25, paddingTop: 15 }}
+        className="-mt-10"
+      >
+        {INTERVIEW_OPTIONS.map((option) => (
+          <InterviewOption
             key={option.id}
-            onPress={() => handleSelect(option.id)}
-            className="flex-row items-start p-4 bg-white rounded-2xl shadow-sm mb-4 border border-gray-200"
-          >
-            <View className="w-10 h-10 rounded-xl bg-indigo-100 items-center justify-center mr-3">
-              <Ionicons
-                name="document-text-outline"
-                size={20}
-                color="#6366f1"
-              />
-            </View>
-            <View className="flex-1">
-              <Text
-                className="text-base font-semibold text-gray-900"
-                numberOfLines={1}
-              >
-                {option.title}
-              </Text>
-              <Text className="text-sm text-gray-500 mt-1">
-                {option.description}
-              </Text>
-            </View>
-          </Pressable>
+            icon={option.icon}
+            title={option.title}
+            description={option.description}
+            onPress={() => handleOptionPress(option.route)}
+          />
         ))}
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }

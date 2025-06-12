@@ -9,7 +9,7 @@ interface TypographyProps {
 const variantStyles = {
   h1: 'text-3xl font-bold',
   h2: 'text-2xl font-semibold',
-  h3: 'text-xl font-medium',
+  h3: 'text-xl',
   body: 'text-base',
   small: 'text-sm',
 };
