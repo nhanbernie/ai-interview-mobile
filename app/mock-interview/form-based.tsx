@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { View, ScrollView } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useForm, Controller } from 'react-hook-form';
+import { router } from 'expo-router';
 import {
   HeaderTitle,
   Selection,
@@ -46,10 +47,9 @@ export default function FormBasedInterviewScreen() {
       workType: '',
     },
   });
-
   const onSubmit = (data: FormData) => {
     console.log('Form data:', data);
-    // Navigate to interview session
+    router.push('/ai-interviewer-selection');
   };
   const getOptionLabel = (options: OptionItem[], value: string) => {
     return options.find((option) => option.value === value)?.label || '';
