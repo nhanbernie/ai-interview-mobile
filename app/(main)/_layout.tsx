@@ -1,6 +1,6 @@
 import { Drawer } from 'expo-router/drawer';
 import { View } from 'react-native';
-import CustomDrawerContent from '@/components/modal/DrawerMenu';
+import CustomDrawerContent from '@/components/drawer/DrawerMenu';
 
 export default function MainLayout() {
   return (

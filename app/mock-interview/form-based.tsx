@@ -94,7 +94,6 @@ export default function FormBasedInterviewScreen() {
               />
             )}
           />
-          {/* Vai trò mong muốn */}
           <Controller
             control={control}
             name="position"

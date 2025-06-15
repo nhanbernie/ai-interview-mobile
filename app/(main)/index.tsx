@@ -1,5 +1,6 @@
 import { View, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useRouter } from 'expo-router';
 import {
   WelcomeHeader,
   InterviewCard,
@@ -15,6 +16,7 @@ import { useFeatureNavigation } from '@/hooks/useFeatureNavigation';
 
 export default function HomeScreen() {
   const { navigateToFeature } = useFeatureNavigation();
+  const router = useRouter();
 
   return (
     <SafeAreaView className="flex-1 bg-white" edges={['top']}>
@@ -48,13 +50,15 @@ export default function HomeScreen() {
           <Typography variant="h2" className="mb-4">
             Lịch sử phỏng vấn
           </Typography>
-
           <FlatList
             data={HISTORY_ITEMS}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
               <View className="mb-4">
-                <HistoryCard item={item} />
+                <HistoryCard
+                  item={item}
+                  onPress={() => router.push('/history')}
+                />
               </View>
             )}
             ListEmptyComponent={

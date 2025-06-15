@@ -1,5 +1,4 @@
 import { Stack } from 'expo-router';
-import { useFrameworkReady } from '@/hooks/useFrameworkReady';
 import {
   useFonts,
   Inter_400Regular,
@@ -10,7 +9,6 @@ import '../src/i18n';
 import '../global.css';
 
 export default function RootLayout() {
-  useFrameworkReady();
 
   const [fontsLoaded] = useFonts({
     'Inter-Regular': Inter_400Regular,

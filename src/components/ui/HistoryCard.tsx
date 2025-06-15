@@ -11,10 +11,13 @@ interface HistoryCardProps {
 
 const HistoryCard = ({ item, onPress }: HistoryCardProps) => {
   const navigation = useNavigation();
-
   const handlePress = () => {
-    // @ts-ignore - Type error with navigation can be ignored here
-    // navigation.navigate('course', { id: item.id });
+    if (onPress) {
+      onPress();
+    } else {
+      // @ts-ignore - Type error with navigation can be ignored here
+      navigation.navigate('history');
+    }
   };
 
   return (
